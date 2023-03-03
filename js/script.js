@@ -72,8 +72,13 @@ function createCell (container, index) {
     //appendo ad un elemento (in questo caso il parametro 'container') la cella creata
     container.append(cell);
 
+    //aggiungo un evento click al parametro cella
     cell.addEventListener('click', function() {
+
+        //aggiungo/cambio il background dell'elemento cell
         cell.style.backgroundColor = '#00FFFF';
+
+        //stampo in console il parametro index inserito all'interno dell'elemento cell
         console.log(index);
     })
 
