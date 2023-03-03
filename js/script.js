@@ -24,34 +24,56 @@ let generatorElement = document.getElementById('generator');
 // - creo un div-container all'interno del quale inserirò gli elementi che si creeranno all'evento click del prossimo punto
 let cellContainerElement = document.getElementById('cell-container');
 
+let difficultyElement = document.getElementById('difficulty');
+
 // - creo un evento click sul bottone
 generatorElement.addEventListener('click', function() {
 
     // - imposto un contatore che mi servirà per uscire dal ciclo while
     contatore = 0;
 
-    // - creo un ciclo while che si ripete tante volte quante sono le caselle di cui necessito(in questo caso 100)
-    while ( contatore < 100) {
+    // - condizione difficoltà selezionata = easy
+    if (difficultyElement.value == 'easy') {
+        // - creo un ciclo while che si ripete tante volte quante sono le caselle di cui necessito(in questo caso 100)
+        while ( contatore < 100) {
+            // - richiamo la funzione generatrice di cella
+            createCell(cellContainerElement, contatore + 1, '50px');
 
-        // - richiamo la funzione generatrice di cella
-        createCell(cellContainerElement, contatore + 1);
+            // - aggiungo un unità al contatore per non creare un loop infinito
+            contatore++
+        }
+    }
 
-        // - aggiungo un unità al contatore per non creare un loop infinito
-        contatore++
+    // - condizione difficoltà selezionata = normal
+    if (difficultyElement.value == 'normal') {
+
+        while ( contatore < 81) {
+            // - richiamo la funzione generatrice di cella
+            createCell(cellContainerElement, contatore + 1, 'calc( 500px / 9)');
+    
+            // - aggiungo un unità al contatore per non creare un loop infinito
+            contatore++
+        }
+    }
+
+    // - condizione difficoltà selezionata = hard
+    if (difficultyElement.value == 'hard') {
+
+        while ( contatore < 49) {
+            // - richiamo la funzione generatrice di cella
+            createCell(cellContainerElement, contatore + 1, 'calc(500px / 7)');
+
+            // - aggiungo un unità al contatore per non creare un loop infinito
+            contatore++
+        }
     }
 
 })
 
-
-
-
-
-
-
 //FUNCTION
 
 //- funzione generatrice di cella
-function createCell (container, index) {
+function createCell (container, index, pixel) {
 
     //creo un elemento div
     let cell = document.createElement('div');
@@ -60,8 +82,8 @@ function createCell (container, index) {
     cell.innerHTML = index;
 
     //modifico lo stile dell'elemento creato
-    cell.style.width = '50px';
-    cell.style.height = '50px';
+    cell.style.width = pixel;
+    cell.style.height = pixel;
     cell.style.border = '1px solid black';
 
     //modifico lo stile per posizionare centralmente il contenuto della cella creata

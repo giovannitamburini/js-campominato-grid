@@ -10,7 +10,7 @@ nav {
     height: 120px;
     padding: 1em;
     background-image: url(/img/navbar-wallpaper.webp);
-
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,13 +33,34 @@ nav #logo div {
     font-weight: 700;
 }
 
-nav button {
+nav #option-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav button,
+nav #option-container label {
     padding: 0.7em;
     border-radius: 10px;
     border: 3px solid yellow;
     background-color: transparent;
     color: white;
     font-size: 1.1em;
+}
+
+nav #option-container label {
+    padding: 0.4em;
+}
+
+nav #option-container label select {
+    background-color: transparent;
+    border: 1px solid yellow;
+    color: orange;
+    font-size: 1em;
+    border-radius: 5px;
 }
 
 main {
