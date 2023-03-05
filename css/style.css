@@ -42,7 +42,8 @@ nav #option-container {
 }
 
 nav button,
-nav #option-container label {
+nav #option-container label,
+main #reset {
     padding: 0.7em;
     border-radius: 10px;
     border: 3px solid yellow;
@@ -67,14 +68,20 @@ main {
     min-height: calc(100vh - 120px - 100px);
     width: 100%;
     background-color: blue;
+    padding-bottom: 1em;
 }
 
-#cell-container {
+main #cell-container {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
     margin: 0 auto;
     padding: 30px 0;
+}
+
+main #reset {
+    display: none;
+    margin: 0 auto;
 }
 
 footer {

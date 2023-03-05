@@ -24,10 +24,19 @@ let generatorElement = document.getElementById('generator');
 // - creo un div-container all'interno del quale inserirò gli elementi che si creeranno all'evento click del prossimo punto
 let cellContainerElement = document.getElementById('cell-container');
 
+// - richiamo dal Dom l'elemento select della difficoltà
 let difficultyElement = document.getElementById('difficulty');
+
+// - richiamo dal Dom l'elemento button per resettare la tabella
+let resetElement = document.getElementById('reset');
+
+let numberCells = 0;
 
 // - creo un evento click sul bottone
 generatorElement.addEventListener('click', function() {
+
+    // rendo visibile il bottone per resettare la griglia
+    resetElement.style.display = 'block';
 
     // - imposto un contatore che mi servirà per uscire dal ciclo while
     contatore = 0;
@@ -72,10 +81,9 @@ generatorElement.addEventListener('click', function() {
     
     FINE CODICE NON OTTIMIZZATO ------------------------------ */
 
+
     // CODICE OTTIMIZZATO
 
-    // creo una variabile per indicare il numero di celle da creare in base alla difficoltà selezionata
-    let numberCells = 0;
     // creo una varibaile per impostare la misura della cella in px in base alla difficoltà selezionata
     let cellPixel;
 
@@ -118,6 +126,32 @@ generatorElement.addEventListener('click', function() {
     // FINE CODICE OTTIMIZZATO
 
 })
+
+
+//BONUS RESET BUTTON
+
+// creo un evento click sul bottone reset
+resetElement.addEventListener('click', function(){
+
+    // imposto il contatore
+    contatoreRemove = 0;
+
+    // creo un ciclo per rimuovere ogni cella tramite iil tasto reset
+    while (contatoreRemove < numberCells) {
+
+        // rimuovo l'ultimo figlio dal container di celle
+        cellContainerElement.removeChild(cellContainerElement.lastChild);
+        
+        // aggiungo un unità al contatore per non creare un loop infinito
+        contatoreRemove++
+    }
+
+    // nascondo il tasto reset dopo averlo utilizzato
+    resetElement.style.display = 'none';
+})
+
+
+
 
 //FUNCTION
 
