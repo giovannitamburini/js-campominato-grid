@@ -21,11 +21,14 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed 
 //- creo un bottone nel body HTML e lo richiamo in js
 let generatorElement = document.getElementById('generator');
 
-// - creo un div-container all'interno del quale inserirò gli elementi che si creeranno all'evento click del prossimo punto
-let cellContainerElement = document.getElementById('cell-container');
-
 // - richiamo dal Dom l'elemento select della difficoltà
 let difficultyElement = document.getElementById('difficulty');
+
+// - richiamo dal Dom l'elemento contenitore dei tasti di selezione e di generazione griglia
+let optionContainerElement = document.getElementById('option-container');
+
+// - creo un div-container all'interno del quale inserirò gli elementi che si creeranno all'evento click del prossimo punto
+let cellContainerElement = document.getElementById('cell-container');
 
 // - richiamo dal Dom l'elemento button per resettare la tabella
 let resetElement = document.getElementById('reset');
@@ -123,6 +126,9 @@ generatorElement.addEventListener('click', function() {
         contatore++
     }
 
+    // tolgo i tasti di selezione difficoltà e del generatore di griglia
+    optionContainerElement.style.display = 'none';
+
     // FINE CODICE OTTIMIZZATO
 
 })
@@ -148,12 +154,14 @@ resetElement.addEventListener('click', function(){
 
     // nascondo il tasto reset dopo averlo utilizzato
     resetElement.style.display = 'none';
+
+    // rendo di nuovo disponibile il tasti di selezione difficoltà e di generazione griglia
+    optionContainerElement.style.display = 'flex';
 })
 
 
 
-
-//FUNCTION
+//FUNCTION----------------------------------------------
 
 //- funzione generatrice di cella
 function createCell (container, index, pixel) {
