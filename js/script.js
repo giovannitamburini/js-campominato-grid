@@ -32,6 +32,8 @@ generatorElement.addEventListener('click', function() {
     // - imposto un contatore che mi servirà per uscire dal ciclo while
     contatore = 0;
 
+    /* CODICE NON OTTIMIZZATO --------------------------
+
     // - condizione difficoltà selezionata = easy
     if (difficultyElement.value == 'easy') {
         // - creo un ciclo while che si ripete tante volte quante sono le caselle di cui necessito(in questo caso 100)
@@ -67,6 +69,53 @@ generatorElement.addEventListener('click', function() {
             contatore++
         }
     }
+    
+    FINE CODICE NON OTTIMIZZATO ------------------------------ */
+
+    // CODICE OTTIMIZZATO
+
+    // creo una variabile per indicare il numero di celle da creare in base alla difficoltà selezionata
+    let numberCells = 0;
+    // creo una varibaile per impostare la misura della cella in px in base alla difficoltà selezionata
+    let cellPixel;
+
+    // - condizione difficoltà selezionata = easy
+    if (difficultyElement.value == 'easy') {
+
+        //numero celle
+        numberCells = 100;
+        //misura in px della singola cella
+        cellPixel = '50px';
+        
+    // - condizione difficoltà selezionata = normal
+    } else if (difficultyElement.value == 'normal') {
+
+        //numero celle
+        numberCells = 81;
+        //misura in px della singola cella
+        cellPixel = 'calc( 500px / 9)';
+
+    // - condizione difficoltà selezionata = hard
+    } else {
+
+        //numero celle
+        numberCells = 49;
+        //misura in px della singola cella
+        cellPixel = 'calc(500px / 7)';
+
+    }
+
+    // creo un ciclo che generi la griglia
+    while (contatore < numberCells) {
+
+        // - richiamo la funzione generatrice di cella
+        createCell(cellContainerElement, contatore + 1, cellPixel);
+
+        // - aggiungo un unità al contatore per non creare un loop infinito
+        contatore++
+    }
+
+    // FINE CODICE OTTIMIZZATO
 
 })
 
